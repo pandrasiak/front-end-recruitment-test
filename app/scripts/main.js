@@ -76,4 +76,29 @@
   }
 
   // Your custom JavaScript goes here
+
+  function moreBaconBtn(){
+
+    // attaches event listener to all buttons with attr data-jsCloneAndAppend,
+    // clones target specified in the attr value, removes ID, appends it to the parent.
+
+    let moreBaconBtns = document.querySelectorAll("button[data-jsCloneAndAppend]");
+
+    if ( moreBaconBtns.length > 0 ){
+      for ( const btn of moreBaconBtns ) {
+        btn.addEventListener( "click", moreBacon );
+      }
+    };
+
+    function moreBacon(){
+      const cloneID = this.dataset["jscloneandappend"]
+      const cloneEl = document.getElementById(cloneID);
+      const clonedEl = cloneEl.cloneNode(true);
+      clonedEl.removeAttribute("id");
+      cloneEl.parentElement.appendChild(clonedEl);
+    };
+  }
+  
+  moreBaconBtn();
+
 })();
