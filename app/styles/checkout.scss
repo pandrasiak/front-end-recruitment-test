@@ -1,0 +1,32 @@
+
+.checkout {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 890px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+
+
+  &__form-wrapper {
+    margin: 0 5px;
+    width: calc(70% - 10px);
+
+    @media (max-width: 700px) {
+      width: calc(100% - 10px);
+    }
+
+
+  }
+
+  &__total-wrapper {
+    margin: 0 5px;
+    width: calc(30% - 10px);
+
+    @media (max-width: 700px) {
+      width: calc(100% - 10px);
+    }
+  }
+
+}
