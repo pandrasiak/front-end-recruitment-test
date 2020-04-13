@@ -29,7 +29,7 @@ html, body {
 }
 .mdl-demo .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
   font-size: inherit;
-}
+}   
 .mdl-demo .mdl-layout__tab-bar-button {
   display: none;
 }
@@ -218,4 +218,3 @@ html, body {
 @import "forms.scss";
 @import "checkout.scss";
 @import "summary.scss";
-                 

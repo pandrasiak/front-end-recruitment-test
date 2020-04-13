@@ -56,7 +56,7 @@
     border-radius: 3px;
     box-shadow: 0 2px 0 #d9d9d9;
     background-color: #fff;
-    padding: 17px 0 6px;
+    padding: 17px 0 10px;
     margin: 0 6px 20px;
 
     &--short {
@@ -157,11 +157,12 @@
     height: 50px;
     width: calc(100% - 12px);
     color: #000;
+    background-color: #6bd400;
+    box-shadow: 0 2px 0 #5db603;
+    color: #fff;
 
     &:hover {
-      background-color: #6bd400;
-      box-shadow: 0 2px 0 #5db603;
-      color: #fff;
+      background-color: #d9d9d9;
     }
 
     .material-icons {

@@ -35,8 +35,8 @@
   );
 
   if (
-    'serviceWorker' in navigator
-    && (window.location.protocol === 'https:' || isLocalhost)
+    'serviceWorker' in navigator &&
+    (window.location.protocol === 'https:' || isLocalhost)
   ) {
     navigator.serviceWorker.register('service-worker.js')
       .then(function(registration) {
@@ -53,18 +53,18 @@
 
             installingWorker.onstatechange = function() {
               switch (installingWorker.state) {
-              case 'installed':
-                // At this point, the old content will have been purged and the
-                // fresh content will have been added to the cache.
-                // It's the perfect time to display a "New content is
-                // available; please refresh." message in the page's interface.
-                break;
+                case 'installed':
+                  // At this point, the old content will have been purged and the
+                  // fresh content will have been added to the cache.
+                  // It's the perfect time to display a "New content is
+                  // available; please refresh." message in the page's interface.
+                  break;
 
-              case 'redundant':
-                throw new Error('The installing ' +
+                case 'redundant':
+                  throw new Error('The installing ' +
                     'service worker became redundant.');
 
-              default:
+                default:
                   // Ignore
               }
             };
@@ -77,20 +77,20 @@
 
   // Your custom JavaScript goes here
 
-  function moreBaconBtn(){
+  function moreBaconBtn() {
 
     // attaches event listener to all buttons with attr data-jsCloneAndAppend,
     // clones target specified in the attr value, removes ID, appends it to the parent.
 
     let moreBaconBtns = document.querySelectorAll("button[data-jsCloneAndAppend]");
 
-    if ( moreBaconBtns.length > 0 ){
-      for ( const btn of moreBaconBtns ) {
-        btn.addEventListener( "click", moreBacon );
+    if (moreBaconBtns.length > 0) {
+      for (const btn of moreBaconBtns) {
+        btn.addEventListener("click", moreBacon);
       }
     };
 
-    function moreBacon(){
+    function moreBacon() {
       const cloneID = this.dataset["jscloneandappend"]
       const cloneEl = document.getElementById(cloneID);
       const clonedEl = cloneEl.cloneNode(true);
@@ -98,7 +98,36 @@
       cloneEl.parentElement.appendChild(clonedEl);
     };
   }
-  
+
+  function checkForm() {
+
+    const form = document.querySelector('.form');
+    if (form) {
+      const fields = form.querySelectorAll("input:not([type=hidden]), select:not([type=hidden]), textarea:not([type=hidden])");
+      const fieldsCount = fields.length;
+
+      for (const field of fields) {
+        field.addEventListener("change", updateValidCount);
+      }
+
+      function updateValidCount() {
+        let validCount = 0;
+        for (const field of fields) {
+          if( field.parentElement.classList.contains("is-dirty") && !field.parentElement.classList.contains("is-invalid")){
+            validCount++;
+          }
+        }
+
+        if ( validCount == fieldsCount){
+          form.querySelector('button[type=submit]').removeAttribute("disabled");
+        }
+
+      }
+    }
+  }
+
+
   moreBaconBtn();
+  checkForm();
 
 })();
